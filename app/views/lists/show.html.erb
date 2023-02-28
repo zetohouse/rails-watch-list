@@ -4,21 +4,21 @@
 
   <div class="row">
 
-  <%# 1. Mostrar todos os filmes dentro dela(lista) %>
-  <% @list.movies.each do |movie| %>
-  <div class="col-6">
-  <% bookmark = Bookmark.find_by(list:@list, movie: movie) %>
-    <div class="card" style="width: 18rem;">
-      <img src= <%= movie.poster_url %> class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= movie.title %></h5>
-        <p class="card-text"><%= movie.overview %></p>
-        <i class="fas fa-quote-left me-2"></i><small class="flex-grow-1"><%= bookmark.comment %></small>
-        <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+   <%# 1. Mostrar todos os filmes dentro dela(lista) %>
+    <% @list.movies.each do |movie| %>
+    <div class="col-6">
+    <% bookmark = Bookmark.find_by(list:@list, movie: movie) %>
+      <div class="card" style="width: 18rem;">
+        <img src= <%= movie.poster_url %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= movie.title %></h5>
+          <p class="card-text"><%= movie.overview %></p>
+          <i class="fas fa-quote-left me-2"></i><small class="flex-grow-1"><%= bookmark.comment %></small>
+          <%= link_to 'Delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
       </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
 
   </div>
 
@@ -30,8 +30,5 @@
 
   <p><%= link_to 'Back to movie list', lists_path %></p>
 
-
-<%# 3. Campo para add um review do filme %>
-<%# 4. Campo para add review da lista %>
 
 </div>
